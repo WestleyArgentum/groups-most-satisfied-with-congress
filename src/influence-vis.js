@@ -25,7 +25,7 @@ $(function () {
             },
 
             yAxis: {
-                title: 'Number of Bills Supported and Opposed by Group'
+                title: 'Number of Bills Supported / Opposed by Group'
             },
 
             bar: {
