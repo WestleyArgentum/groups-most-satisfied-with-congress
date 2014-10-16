@@ -1,11 +1,15 @@
 $(function () {
 
     d3.json("data/industry-engagement.json", function(error, data) {
+        //length = data[0]["data"].length
+        data[0]["data"] = data[0]["data"].slice(0, 75)
+        data[1]["data"] = data[1]["data"].slice(0, 75)
+
         new Contour({
             el: '.bar-stacked',
 
             chart: {
-                height: 20 * data[0].data.length,
+                height: 20 * 75,
                 padding: {
                     left: 325
                 }

@@ -61,7 +61,8 @@ end
 
 function format_engagement_data(engagement_map)
     order = collect(keys(engagement_map))
-    sort!(order, lt = (lhs, rhs) -> ((engagement_map[lhs]["supported"] + engagement_map[lhs]["opposed"]) < (engagement_map[rhs]["supported"] + engagement_map[rhs]["opposed"])))
+    sort!(order, lt = (lhs, rhs) -> ((engagement_map[lhs]["supported"] + engagement_map[lhs]["opposed"]) >
+                                    (engagement_map[rhs]["supported"] + engagement_map[rhs]["opposed"])))
 
     engagement_table = [
         { "name" => "Supported", "data" => Any[] },

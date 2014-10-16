@@ -1,5 +1,11 @@
+.s-1.Supported {
+    stroke: hsla(205, 67%, 42%, 1);
+    background-color: hsla(205, 67%, 42%, 1);
+    fill: hsla(205, 67%, 42%, 1);
+}
 
-text {
-    overflow: hidden;
-    text-overflow: ellipsis;
+.s-2.Opposed {
+    stroke: hsla(360, 85%, 56%, 1);
+    background-color: hsla(360, 85%, 56%, 1);
+    fill: hsla(360, 85%, 56%, 1);
 }
