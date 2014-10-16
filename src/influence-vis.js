@@ -5,9 +5,9 @@ $(function () {
             el: '.bar-stacked',
 
             chart: {
-                height: 30 * data[0].data.length,
+                height: 20 * data[0].data.length,
                 padding: {
-                    left: 350
+                    left: 325
                 }
             },
 
