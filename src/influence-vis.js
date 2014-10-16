@@ -1,6 +1,6 @@
 $(function () {
 
-    d3.json("112th-influence-vis/data/industry-engagement.json", function(error, data) {
+    d3.json("data/industry-engagement.json", function(error, data) {
         new Contour({
             el: '.bar-stacked',
 
