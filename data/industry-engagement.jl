@@ -65,8 +65,8 @@ function format_engagement_data(engagement_map)
                                     (engagement_map[rhs]["supported"] + engagement_map[rhs]["opposed"])))
 
     engagement_table = [
-        { "name" => "Supported", "data" => Any[] },
-        { "name" => "Opposed", "data" => Any[] },
+        { "name" => "# Bills Supported by Group", "data" => Any[] },
+        { "name" => "# Bills Opposed by Group", "data" => Any[] },
     ]
 
     supporter_data = engagement_table[1]["data"]

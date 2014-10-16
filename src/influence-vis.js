@@ -1,15 +1,16 @@
 $(function () {
 
+    var SHOW_TOP_NUM = 75;
+
     d3.json("data/industry-engagement.json", function(error, data) {
-        //length = data[0]["data"].length
-        data[0]["data"] = data[0]["data"].slice(0, 75)
-        data[1]["data"] = data[1]["data"].slice(0, 75)
+        data[0]["data"] = data[0]["data"].slice(0, SHOW_TOP_NUM)
+        data[1]["data"] = data[1]["data"].slice(0, SHOW_TOP_NUM)
 
         new Contour({
-            el: '.bar-stacked',
+            el: '#industry-engagement .bar-stacked',
 
             chart: {
-                height: 20 * 75,
+                height: 20 * SHOW_TOP_NUM,
                 padding: {
                     left: 325
                 }
@@ -24,7 +25,7 @@ $(function () {
             },
 
             yAxis: {
-                title: 'Industry Engagement'
+                title: 'Number of Bills Supported and Opposed by Group'
             },
 
             bar: {
