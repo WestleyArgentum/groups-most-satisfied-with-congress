@@ -51,9 +51,6 @@ function build_engagement_map(bills, industries)
         end
 
         opposers = data["positions"]["opposed"]
-        if "JE300" in opposers
-            println(opposers)
-        end
         for ind in opposers
             engagement_map[ind]["opposed"] += 1
         end
@@ -63,6 +60,9 @@ function build_engagement_map(bills, industries)
 end
 
 function format_engagement_data(engagement_map)
+    order = collect(keys(engagement_map))
+    sort!(order, lt = (lhs, rhs) -> ((engagement_map[lhs]["supported"] + engagement_map[lhs]["opposed"]) < (engagement_map[rhs]["supported"] + engagement_map[rhs]["opposed"])))
+
     engagement_table = [
         { "name" => "Supported", "data" => Any[] },
         { "name" => "Opposed", "data" => Any[] },
@@ -71,16 +71,17 @@ function format_engagement_data(engagement_map)
     supporter_data = engagement_table[1]["data"]
     opposed_data = engagement_table[2]["data"]
 
-    for (ind, data) in engagement_map
-
+    for ind in order
         push!(supporter_data, {
+            "id" => ind,
             "x" => industries[ind],
-            "y" => data["supported"]
+            "y" => engagement_map[ind]["supported"]
         })
 
         push!(opposed_data, {
+            "id" => ind,
             "x" => industries[ind],
-            "y" => data["opposed"]
+            "y" => engagement_map[ind]["opposed"]
         })
     end
 
