@@ -1,3 +1,22 @@
+
+.chart-title {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 24px;
+    color: #444;
+    text-align: center;
+    margin-bottom: .3em;
+}
+
+.chart-title .sub-title {
+    font-size: 16px;
+}
+
+.source {
+    font-size: 12px;
+    text-align: left;
+    margin-top: 3px;
+}
+
 .s-1.Supported {
     stroke: hsla(205, 67%, 42%, 1);
     background-color: hsla(205, 67%, 42%, 1);
