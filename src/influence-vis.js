@@ -25,7 +25,8 @@ $(function () {
             },
 
             yAxis: {
-                title: 'Number of Bills'
+                title: 'Number of Bills',
+                ticks: 4
             },
 
             bar: {
