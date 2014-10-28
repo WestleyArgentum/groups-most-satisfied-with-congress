@@ -28,3 +28,12 @@
     background-color: hsla(360, 85%, 56%, 1);
     fill: hsla(360, 85%, 56%, 1);
 }
+
+.page-header {
+    text-align: center;
+}
+
+.body-text {
+    text-align: left;
+    font-size: 16px;
+}
