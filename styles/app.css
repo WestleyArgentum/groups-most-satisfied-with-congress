@@ -29,6 +29,18 @@
     fill: hsla(360, 85%, 56%, 1);
 }
 
+.s-1.Opposed {
+    stroke: hsla(360, 85%, 56%, 1);
+    background-color: hsla(360, 85%, 56%, 1);
+    fill: hsla(360, 85%, 56%, 1);
+}
+
+.s-2.Supported {
+    stroke: hsla(205, 67%, 42%, 1);
+    background-color: hsla(205, 67%, 42%, 1);
+    fill: hsla(205, 67%, 42%, 1);
+}
+
 .page-header {
     text-align: center;
 }
