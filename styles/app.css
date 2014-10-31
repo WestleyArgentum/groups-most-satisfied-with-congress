@@ -49,3 +49,11 @@
     text-align: left;
     font-size: 16px;
 }
+
+.body-text:last-of-type {
+    margin-bottom: 32px;
+}
+
+.body-text:first-of-type {
+    margin-top: 32px;
+}
