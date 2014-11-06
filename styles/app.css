@@ -57,3 +57,7 @@
 .body-text:first-of-type {
     margin-top: 32px;
 }
+
+h2.page-header {
+    margin-top: 60px;
+}
