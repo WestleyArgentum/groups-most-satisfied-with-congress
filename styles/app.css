@@ -1,0 +1,63 @@
+
+.chart-title {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 24px;
+    color: #444;
+    text-align: center;
+    margin-bottom: .3em;
+}
+
+.chart-title .sub-title {
+    font-size: 16px;
+}
+
+.source {
+    font-size: 12px;
+    text-align: left;
+    margin-top: 3px;
+}
+
+.s-1.Supported {
+    stroke: hsla(205, 67%, 42%, 1);
+    background-color: hsla(205, 67%, 42%, 1);
+    fill: hsla(205, 67%, 42%, 1);
+}
+
+.s-2.Opposed {
+    stroke: hsla(360, 85%, 56%, 1);
+    background-color: hsla(360, 85%, 56%, 1);
+    fill: hsla(360, 85%, 56%, 1);
+}
+
+.s-1.Opposed {
+    stroke: hsla(360, 85%, 56%, 1);
+    background-color: hsla(360, 85%, 56%, 1);
+    fill: hsla(360, 85%, 56%, 1);
+}
+
+.s-2.Supported {
+    stroke: hsla(205, 67%, 42%, 1);
+    background-color: hsla(205, 67%, 42%, 1);
+    fill: hsla(205, 67%, 42%, 1);
+}
+
+.page-header {
+    text-align: center;
+}
+
+.body-text {
+    text-align: left;
+    font-size: 16px;
+}
+
+.body-text:last-of-type {
+    margin-bottom: 32px;
+}
+
+.body-text:first-of-type {
+    margin-top: 32px;
+}
+
+h2.page-header {
+    margin-top: 60px;
+}
