@@ -3,14 +3,10 @@
 
 All the data you need to reproduce these findings is publically available. Below are rough steps and links to code that can help you towards that end.
 
-1. Load and parse `maplight-112th-bills-2014-08-22.csv`. Each row in this file represents a combination of `Bill`, `Motion`, `ActionID`, `Session`, `Industry`, `Catcode`, and `InterestGroupSupport`. We will use this data to build our other datasets.
+### Acquire the raw data
+First things first, you need to download the bulk data provided by maplight and use it to scrape their site for more information of interest. The [maplight-scraper](https://github.com/WestleyArgentum/maplight-scraper) should help greatly with this.
 
-2. Build a map of `ActionID` => `Bill`
+In that repository you should find bulk csv files containing rows with `Bill`, `Motion`, `ActionID`, `Session`, `Industry`, `Catcode`, and `InterestGroupSupport` fields. That data will form the basis for this story, but you'll also have to scrape information about what kinds of actions were taken on bills, etc. See the [maplight-scraper readme](https://github.com/WestleyArgentum/maplight-scraper/blob/master/README.md) for a more detailed walkthrough of how to do that.
 
-3. Scrape Maplight for data about every action on every bill. Using the `ActionID` => `Bill` map, we can construct maplight urls. See [maplight-scraper](https://github.com/WestleyArgentum/maplight-scraper) for more details. We're interested in all the data we can get about each action: the session, prefix, and bill number, the chamber, the type of action, whether the action passed, when the bill was introduced, and when this action occured.
-
-4. Build a map of the above data and attach to each `ActionID` a dictionary of `postions` => `{ "support": [...], "opposed": [...] }`
-
-5. Use the origional `maplight-112th-bills-2014-08-22.csv` to build a map of `Catcode` => `Industry Description` (useful for knowing what you're looking at)
-
-6. Use `industry-enguagement.jl` to marshal your data into a graphable form.
+### Work with the condensed bills and industries datasets
+Once you have a map of `ActionID` to bill information and of `Industry` codes to human-friendly names, you should be able to run the included `industry-enguagement.jl` script. This will filter out bills that were never voted on, filter out duplicate votes, etc, and leave you with a table of industries and the number of bills they supported / opposed.
