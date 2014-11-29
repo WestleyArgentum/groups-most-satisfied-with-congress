@@ -53,7 +53,7 @@ function build_engagement_map(bills, industries)
             engagement_map[ind]["supported"] += 1
         end
 
-        opposers = data["positions"]["opposed"]
+        opposers = data["positions"]["oppose"]
         for ind in opposers
             engagement_map[ind]["opposed"] += 1
         end
@@ -121,7 +121,7 @@ bills = filter_overlapping_votes(filter_has_votes(bills))
 
 for (aid, data) in bills
     data["positions"]["support"] = unique(data["positions"]["support"])
-    data["positions"]["opposed"] = unique(data["positions"]["opposed"])
+    data["positions"]["oppose"] = unique(data["positions"]["oppose"])
 end
 
 
