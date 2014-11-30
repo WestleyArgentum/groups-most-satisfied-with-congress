@@ -1,7 +1,6 @@
 
 using JSON
 
-const industries_filename = "113industries.json"
 const catcodes_filename = "crp-categories.json"
 const bills_filename = "113bills.json"
 
@@ -130,7 +129,6 @@ function sort_opposed_positions(engagement_map, lhs, rhs)
 end
 
 
-industries = JSON.parse(readall(industries_filename))
 catcodes = JSON.parse(readall(catcodes_filename))
 bills = JSON.parse(readall(bills_filename))
 bills = filter_overlapping_votes(filter_has_votes(bills))
