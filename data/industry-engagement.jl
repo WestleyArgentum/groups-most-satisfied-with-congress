@@ -1,12 +1,13 @@
 
 using JSON
 
-const industries_filename = "112th-industries.json"
-const bills_filename = "112th-bills.json"
+const industries_filename = "113industries.json"
+const catcodes_filename = "crp-categories.json"
+const bills_filename = "113bills.json"
 
-const output_total_positions = "industry-engagement.json"
-const output_support_positions = "top-supporters.json"
-const output_oppose_positions = "top-opposers.json"
+const output_total_positions = "industry-engagement-113.json"
+const output_support_positions = "top-supporters-113.json"
+const output_oppose_positions = "top-opposers-113.json"
 
 function filter_overlapping_votes(bills)
     overlap = Any[]
@@ -37,11 +38,21 @@ function filter_has_votes(bills)
     filter((k,b)->get(b, "action", "") == "passage", bills)
 end
 
-function build_engagement_map(bills, industries)
+function remap_historical_catcodes(catcode)
+    if catcode == "LT200"
+        catcode = "LM150"
+    elseif catcode == "A7000"
+        catcode = "A0000"
+    end
+
+    catcode
+end
+
+function build_engagement_map(bills, catcodes)
     engagement_map = Dict()
 
-    for (id, name) in industries
-        engagement_map[id] = {
+    for (id, name) in catcodes
+        engagement_map[name["Industry"]] = {
             "supported" => 0,
             "opposed" => 0
         }
@@ -50,12 +61,16 @@ function build_engagement_map(bills, industries)
     for (aid, data) in bills
         supporters = data["positions"]["support"]
         for ind in supporters
-            engagement_map[ind]["supported"] += 1
+            ind_code = remap_historical_catcodes(ind)
+            catcode = catcodes[ind_code]["Industry"]
+            engagement_map[catcode]["supported"] += 1
         end
 
         opposers = data["positions"]["oppose"]
         for ind in opposers
-            engagement_map[ind]["opposed"] += 1
+            ind_code = remap_historical_catcodes(ind)
+            catcode = catcodes[ind_code]["Industry"]
+            engagement_map[catcode]["opposed"] += 1
         end
     end
 
@@ -87,13 +102,13 @@ function format_engagement_data(engagement_map, sort_by, support_first = true)
     for ind in order
         push!(supporter_data, {
             "id" => ind,
-            "x" => industries[ind],
+            "x" => ind,
             "y" => engagement_map[ind]["supported"]
         })
 
         push!(opposed_data, {
             "id" => ind,
-            "x" => industries[ind],
+            "x" => ind,
             "y" => engagement_map[ind]["opposed"]
         })
     end
@@ -116,6 +131,7 @@ end
 
 
 industries = JSON.parse(readall(industries_filename))
+catcodes = JSON.parse(readall(catcodes_filename))
 bills = JSON.parse(readall(bills_filename))
 bills = filter_overlapping_votes(filter_has_votes(bills))
 
@@ -125,7 +141,7 @@ for (aid, data) in bills
 end
 
 
-engagement_map = build_engagement_map(bills, industries)
+engagement_map = build_engagement_map(bills, catcodes)
 
 out = open(output_total_positions, "w")
 write(out, json(format_engagement_data(engagement_map, sort_total_positions)))
