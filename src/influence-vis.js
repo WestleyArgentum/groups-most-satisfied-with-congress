@@ -43,7 +43,7 @@ $(function () {
             chart: {
                 height: 20 * SHOW_TOP_NUM,
                 padding: {
-                    left: 325
+                    left: 280
                 }
             },
 
@@ -95,7 +95,7 @@ $(function () {
             chart: {
                 height: 25 * SHOW_TOP_NUM,
                 padding: {
-                    left: 325
+                    left: 280
                 }
             },
 
@@ -146,7 +146,7 @@ $(function () {
             chart: {
                 height: 25 * SHOW_TOP_NUM,
                 padding: {
-                    left: 325
+                    left: 280
                 }
             },
 
