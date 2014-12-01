@@ -61,3 +61,19 @@
 h2.page-header {
     margin-top: 60px;
 }
+
+.legend {
+  font-size: 17px;
+  margin-bottom: 36px;
+}
+
+a {
+    text-decoration: none !important
+}
+
+a:hover,
+a:focus,
+a:active,
+a.selected {
+    border-bottom: 2px solid hsla(208, 56%, 77%, 1);
+}

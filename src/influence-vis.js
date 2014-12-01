@@ -8,6 +8,24 @@ $(function () {
         topSupportersChart,
         topOpposersChart;
 
+    function redrawAll(index) {
+        industryEngagementChart.setData(industryEngagementDatasets[index]).render();
+        topSupportersChart.setData(topSupportersDatasets[index]).render();
+        topOpposersChart.setData(topOpposersDatasets[index]).render();
+    }
+
+    $('#112th-link').on('click', function() {
+        redrawAll(1);
+    });
+
+    $('#113th-link').on('click', function() {
+        redrawAll(0);
+    });
+
+    $('.legend').on('click', 'a', function(){
+        $('.selected').toggleClass('selected');
+        $(this).addClass('selected');
+    })
 
     d3.json('data/industry-engagement.json', function(error, data) {
         var SHOW_TOP_NUM = 50;
