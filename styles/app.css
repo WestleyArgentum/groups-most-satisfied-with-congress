@@ -18,27 +18,27 @@
 }
 
 .s-1.Supported {
-    stroke: hsla(205, 67%, 42%, 1);
-    background-color: hsla(205, 67%, 42%, 1);
-    fill: hsla(205, 67%, 42%, 1);
+    stroke: hsla(160, 100%, 37%, 1);
+    background-color: hsla(160, 100%, 37%, 1);
+    fill: hsla(160, 100%, 37%, 1);
 }
 
 .s-2.Opposed {
-    stroke: hsla(360, 85%, 56%, 1);
-    background-color: hsla(360, 85%, 56%, 1);
-    fill: hsla(360, 85%, 56%, 1);
+    stroke: hsla(332, 100%, 48%, 1);
+    background-color: hsla(332, 100%, 48%, 1);
+    fill: hsla(332, 100%, 48%, 1);
 }
 
 .s-1.Opposed {
-    stroke: hsla(360, 85%, 56%, 1);
-    background-color: hsla(360, 85%, 56%, 1);
-    fill: hsla(360, 85%, 56%, 1);
+    stroke: hsla(332, 100%, 48%, 1);
+    background-color: hsla(332, 100%, 48%, 1);
+    fill: hsla(332, 100%, 48%, 1);
 }
 
 .s-2.Supported {
-    stroke: hsla(205, 67%, 42%, 1);
-    background-color: hsla(205, 67%, 42%, 1);
-    fill: hsla(205, 67%, 42%, 1);
+    stroke: hsla(160, 100%, 37%, 1);
+    background-color: hsla(160, 100%, 37%, 1);
+    fill: hsla(160, 100%, 37%, 1);
 }
 
 .page-header {
