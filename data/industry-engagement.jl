@@ -2,11 +2,11 @@
 using JSON
 
 const catcodes_filename = "crp-categories.json"
-const bills_filename = "113bills.json"
+const bills_filenames = ["113th-bills.json", "112th-bills.json"]
 
-const output_total_positions = "industry-engagement-113.json"
-const output_support_positions = "top-supporters-113.json"
-const output_oppose_positions = "top-opposers-113.json"
+const output_total_positions = "industry-engagement.json"
+const output_support_positions = "top-supporters.json"
+const output_oppose_positions = "top-opposers.json"
 
 function filter_overlapping_votes(bills)
     overlap = Any[]
@@ -130,25 +130,28 @@ end
 
 
 catcodes = JSON.parse(readall(catcodes_filename))
-bills = JSON.parse(readall(bills_filename))
-bills = filter_overlapping_votes(filter_has_votes(bills))
+bills = [ JSON.parse(readall(file)) for file in bills_filenames ]
+bills = [ filter_overlapping_votes(filter_has_votes(bill_set)) for bill_set in bills ]
 
-for (aid, data) in bills
-    data["positions"]["support"] = unique(data["positions"]["support"])
-    data["positions"]["oppose"] = unique(data["positions"]["oppose"])
+print(bills)
+for bill_set in bills
+    for (aid, data) in bill_set
+        data["positions"]["support"] = unique(data["positions"]["support"])
+        data["positions"]["oppose"] = unique(data["positions"]["oppose"])
+    end
 end
 
 
-engagement_map = build_engagement_map(bills, catcodes)
+engagement_maps = [ build_engagement_map(bill_set, catcodes) for bill_set in bills ]
 
 out = open(output_total_positions, "w")
-write(out, json(format_engagement_data(engagement_map, sort_total_positions)))
+write(out, json([format_engagement_data(map, sort_total_positions) for map in engagement_maps]))
 close(out)
 
 out = open(output_support_positions, "w")
-write(out, json(format_engagement_data(engagement_map, sort_support_positions)))
+write(out, json([format_engagement_data(map, sort_support_positions) for map in engagement_maps]))
 close(out)
 
 out = open(output_oppose_positions, "w")
-write(out, json(format_engagement_data(engagement_map, sort_opposed_positions, false)))
+write(out, json([format_engagement_data(map, sort_opposed_positions, false) for map in engagement_maps]))
 close(out)
