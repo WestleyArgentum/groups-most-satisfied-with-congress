@@ -133,14 +133,12 @@ catcodes = JSON.parse(readall(catcodes_filename))
 bills = [ JSON.parse(readall(file)) for file in bills_filenames ]
 bills = [ filter_overlapping_votes(filter_has_votes(bill_set)) for bill_set in bills ]
 
-print(bills)
 for bill_set in bills
     for (aid, data) in bill_set
         data["positions"]["support"] = unique(data["positions"]["support"])
         data["positions"]["oppose"] = unique(data["positions"]["oppose"])
     end
 end
-
 
 engagement_maps = [ build_engagement_map(bill_set, catcodes) for bill_set in bills ]
 
