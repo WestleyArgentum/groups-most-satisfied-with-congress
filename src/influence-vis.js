@@ -25,7 +25,7 @@ $(function () {
     $('.legend').on('click', 'a', function(){
         $('.selected').toggleClass('selected');
         $(this).addClass('selected');
-    })
+    });
 
     d3.json('data/industry-engagement.json', function(error, data) {
         var SHOW_TOP_NUM = 50;
